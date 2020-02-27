@@ -22,7 +22,7 @@ public class EarthquakeQueryService {
 
     private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);
 
-    public String getJSON(int distance, int minmag) {
+    public String getJSON(int distance, int minmag){	
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();

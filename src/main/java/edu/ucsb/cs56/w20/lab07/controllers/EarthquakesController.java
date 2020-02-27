@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.ucsb.cs56.w20.lab07.formbeans.EqSearch;
+import edu.ucsb.cs56.w20.lab07.services.EarthquakeQueryService;
 
 @Controller
 public class EarthquakesController {
