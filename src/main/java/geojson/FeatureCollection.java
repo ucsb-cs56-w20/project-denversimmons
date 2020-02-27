@@ -9,7 +9,9 @@ public class FeatureCollection{
   private static Logger logger = LoggerFactory.getLogger(FeatureCollection.class);
   public String type;
   public static FeatureCollection fromJSON(String json) {
-        try {
+      public Metadata metadata;
+
+      try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
