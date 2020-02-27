@@ -1,6 +1,9 @@
 # cs56 w20 lab07
 
-Starter Code
+Denver Simmons
+githubid: denversimmons
+repo link: https://github.com/ucsb-cs56-w20/lab07-denversimmons
+github pages: 
 
 # Configuration for OAuth
 
