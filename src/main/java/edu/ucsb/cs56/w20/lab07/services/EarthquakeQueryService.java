@@ -23,10 +23,6 @@ public class EarthquakeQueryService {
     private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);
 
     public String getJSON(int distance, int minmag) {
-        String fakeJson = "{ \"key\": \"value\" }";
-        String json = fakeJson;
-        logger.info("json=" + json);
-        return json;
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
