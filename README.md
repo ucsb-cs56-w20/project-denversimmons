@@ -1,4 +1,4 @@
-# cs56 w20 lab07
+# cs56 w20 Project
 
 Denver Simmons
 
