@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import edu.ucsb.cs56.w20.lab07.formbeans.LocSearch;
 import edu.ucsb.cs56.w20.lab07.services.LocationQueryService;
 
-import geojson.FeatureCollection;
+import java.util.List;
+import osm.PlaceCollection;
+import osm.Place;
 
 @Controller
 public class LocationsController {
@@ -28,8 +30,9 @@ public class LocationsController {
         // TODO: Actually do the search here and add results to the model
          String json = e.getJSON(locSearch.getLocation());
          model.addAttribute("json", json);
-         FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
-         model.addAttribute("featureCollection",featureCollection);
+	 PlaceCollection pc = new PlaceCollection();
+         List<Place> places = pc.listFromJSON(json);
+         model.addAttribute("places",places);
          return "locations/results";
     }
 }

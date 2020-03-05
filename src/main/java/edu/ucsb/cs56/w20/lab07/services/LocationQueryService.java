@@ -23,6 +23,7 @@ public class LocationQueryService {
     private Logger logger = LoggerFactory.getLogger(LocationQueryService.class);
 
     public String getJSON(String location){
+      	
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
@@ -31,15 +32,16 @@ public class LocationQueryService {
 
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
-        String url = "https:////nominatim.openstreetmap.org//search//";
+        String url = "https://nominatim.openstreetmap.org/search/";
 	String[] splited = location.split("\\s+");
 	for(int i = 0; i < splited.length; i++){
 	    url += splited[i];
-	    if(i != splited.length -1):
-		url+= "%20"
+	    if(i != (splited.length -1)){
+		url+= "%20";
+	    }
 	}
 
-        String url += "?format=json";
+        url += "?format=json";
         logger.info("url=" + url);
 
         String retVal="";
@@ -53,6 +55,7 @@ public class LocationQueryService {
         }
         logger.info("from LocationQueryService.getJSON: " + retVal);
         return retVal;
+	
     }
 
 } 
