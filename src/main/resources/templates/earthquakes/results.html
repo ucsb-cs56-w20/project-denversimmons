@@ -24,7 +24,7 @@
       </tr>
     </table>
 
-    <h2> Results</h2>
+    <h2>Results</h2>
 
         <table class="table">
             <thead>
@@ -34,7 +34,7 @@
             </thead>
             <tbody>
               <tr>
-		  <td><a th:href="${featureCollection.metadata.url}" th.text="${featureCollection.metadata.title}"></a><td>
+		<td><a th:href="${featureCollection.metadata.url}}" th.text="${featureCollection.title}"></a><td>
                   <td th:text="${featureCollection.metadata.count}"></td>
                 </tr>
             </tbody>
