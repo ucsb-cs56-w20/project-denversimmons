@@ -34,9 +34,9 @@
             </thead>
             <tbody>
               <tr>
-		<tr th:each="f: ${featureCollection.metadata}">
-		<td><a th:href="${f.url}" th.text="${f.title}"></a><td>
-                  <td th:text="${featureCollection.metadata.count}"></td>
+		<tr th:each="m: ${featureCollection.metadata}">
+		<td><a th:href="${m.url}" th.text="${m.title}"></a><td>
+                  <td th:text="${m.count}"></td>
                 </tr>
             </tbody>
         </table>
