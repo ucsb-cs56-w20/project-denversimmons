@@ -34,9 +34,8 @@
             </thead>
             <tbody>
               <tr>
-		<tr th:each="m: ${featureCollection.metadata}">
-		<td><a th:href="${m.url}" th.text="${m.title}"></a><td>
-                  <td th:text="${m.count}"></td>
+		<td><a th:href="${featureCollection.metadata.url}" th.text="${featureCollection.metadata.title}"></a><td>
+                <td th:text="${featureCollection.metadata.count}"></td>
                 </tr>
             </tbody>
         </table>
@@ -51,9 +50,9 @@
             </thead>
             <tbody>
                 <tr th:each="f: ${featureCollection.features}"> 
-                    <td><a th:href="${f.url}" th.text="${f.id}"></a><td>
-                    <td th:text="${f.properties.place}"></td>
-                    <td th:text="${f.properties.mag}"></td>
+                <td><a th:href="${featureCollection.metadata.url}" th.text="${f.id}"></a><td>
+                <td th:text="${f.properties.place}"></td>
+                <td th:text="${f.properties.mag}"></td>
                 </tr>
             </tbody>
         </table>

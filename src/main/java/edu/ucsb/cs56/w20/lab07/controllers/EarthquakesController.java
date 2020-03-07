@@ -20,7 +20,7 @@ public class EarthquakesController {
         return "earthquakes/search";
     }
 
-     @GetMapping("/earthquakes/results")
+    @GetMapping("/earthquakes/results")
     public String getEarthquakesResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             EqSearch eqSearch) {
 	 EarthquakeQueryService e = new EarthquakeQueryService();
