@@ -10,21 +10,25 @@
   <div class="container">
     <div th:replace="bootstrap/bootstrap_nav_header.html"></div>
 
-      
-    <h1>Earthquake Search Results</h1>
-    <table class="table">
-      <tr>
-	<th>Title</th>
-	<th>Count</th>
-	<th>Distance (km)</th>
-	<th>Minimum Magnitude</th>
-      </tr>
-      <tr>
-	<td><a href="${featureCollection.metadata.url}" th:text="${featureCollection.metadata.title}"></a><td>
-	<td th:text="${featureCollection.metadata.count}"></td>
-	<td th:text="${eqSearch.distance}"></td>
-        <td th:text="${eqSearch.minmag}"></td>
-      </tr>
+
+<h1>Earthquake Search Results</h1>
+     <table class="table">
+      <thread>
+	<tr>
+	  <th>Title</th>
+	  <th>Count</th>
+	  <th>Distance (km)</th>
+	  <th>Minimum Magnitude</th>
+	</tr>
+	<thread>
+	<tbody>
+	<tr>
+	  <td><a href="${featureCollection.metadata.url}" th:text="${featureCollection.metadata.title}"></a><td>
+	  <td th:text="${featureCollection.metadata.count}"></td>
+	  <td th:text="${eqSearch.distance}"></td>
+          <td th:text="${eqSearch.minmag}"></td>
+	</tr>
+	<tbody>
     </table>
 
     <h2>Earthquakes</h2>
