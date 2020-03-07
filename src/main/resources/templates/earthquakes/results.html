@@ -23,7 +23,7 @@
 	<thread>
 	<tbody>
 	<tr>
-	  <td><a th:href="${featureCollection.metadata.url}" th:text="${featureCollection.metadata.title}"></a><td>
+	  <td th:text="${featureCollection.metadata.title}"></td>
 	  <td th:text="${featureCollection.metadata.count}"></td>
 	  <td th:text="${eqSearch.distance}"></td>
           <td th:text="${eqSearch.minmag}"></td>
@@ -42,7 +42,7 @@
             </thead>
             <tbody>
                 <tr th:each="f: ${featureCollection.features}"> 
-                  <td><a th:href="${featureCollection.metadata.url}" th:text="${f.id}"></a></td>
+                  <td><a th:href="https://earthquake.usgs.gov/earthquakes/eventpage/${f.id}/executive" th:text="${f.id}"></a></td>
                   <td th:text="${f.properties.place}"></td>
                   <td th:text="${f.properties.mag}"></td>
                 </tr>
