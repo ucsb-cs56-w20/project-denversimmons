@@ -28,7 +28,6 @@ public class LocationQueryService {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
-	headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
@@ -47,7 +46,12 @@ public class LocationQueryService {
 	url = "https://nominatim.openstreetmap.org/search/Santa%20Barbara?format=json";
         logger.info("url=" + url);
 
-        String retVal="";
+        //String retVal="";
+	ResponseEntity<String> re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        MediaType contentType = re.getHeaders().getContentType();
+        HttpStatus statusCode = re.getStatusCode();
+        String retVal = re.getBody();
+	/*
         try {   
             ResponseEntity<String> re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
             MediaType contentType = re.getHeaders().getContentType();
@@ -56,6 +60,7 @@ public class LocationQueryService {
         } catch (HttpClientErrorException e) {
             retVal = "{\"error\": \"401: Unauthorized\"}";
         }
+	*/
 	logger.info("url: " + url);
 	
         logger.info("from EarthquakeQueryService.getJSON: " + retVal);
