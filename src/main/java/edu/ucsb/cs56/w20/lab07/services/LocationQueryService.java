@@ -43,7 +43,7 @@ public class LocationQueryService {
         url += "?format=json";
 
 	url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=0&maxradiuskm=60&latitude=34.414000&longitude=-119.848900";
-	
+	url = "https://nominatim.openstreetmap.org/search/Santa%20Barbara?format=json";
         logger.info("url=" + url);
 
         String retVal="";
