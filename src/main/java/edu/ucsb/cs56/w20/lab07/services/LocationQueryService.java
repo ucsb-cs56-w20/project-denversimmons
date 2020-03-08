@@ -43,14 +43,14 @@ public class LocationQueryService {
         url += "?format=json";
         logger.info("url=" + url);
 
-        String retVal="";
+        String retVal="RetVal: ";
         try {   
             ResponseEntity<String> re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
             MediaType contentType = re.getHeaders().getContentType();
             HttpStatus statusCode = re.getStatusCode();
-            retVal = re.getBody();
+            retVal += re.getBody();
         } catch (HttpClientErrorException e) {
-            retVal = "{\"error\": \"401: Unauthorized\"}";
+            retVal += "{\"error\": \"401: Unauthorized\"}";
         }
         logger.info("from LocationQueryService.getJSON: " + retVal);
         return retVal;
