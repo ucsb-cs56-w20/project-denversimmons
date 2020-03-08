@@ -41,13 +41,15 @@ public class LocationQueryService {
 	}
 
         url += "?format=json";
+
+	url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=0&maxradiuskm=60&latitude=34.414000&longitude=-119.848900";
 	
         logger.info("url=" + url);
 
         String retVal="";
         try {   
             ResponseEntity<String> re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-             MediaType contentType = re.getHeaders().getContentType();
+            MediaType contentType = re.getHeaders().getContentType();
             HttpStatus statusCode = re.getStatusCode();
             retVal = re.getBody();
         } catch (HttpClientErrorException e) {
