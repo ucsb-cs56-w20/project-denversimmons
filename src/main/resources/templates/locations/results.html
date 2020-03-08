@@ -35,12 +35,13 @@
       </thread>
       <tbody>
 	<tr>
-	  <td>Check></td>
-	  <td>Check></td>
-	  <td>Check></td>
-	  <td>Check></td>
-	  <td>Check></td>
-      </tr>
+	  <tr th:each="p: ${places}">
+            <td th:text="${p.place_id}"></td>
+            <td th:text="${p.lat}"></td>
+            <td th:text="${p.lon}"></td>
+            <td th:text="${p.display_name}"></td>
+            <td th:text="${p.type}"></td>
+	  </tr>
       </tbody>
     </table>
     
