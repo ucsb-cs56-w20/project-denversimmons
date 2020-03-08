@@ -54,7 +54,7 @@ public class LocationQueryService {
             retVal = "{\"error\": \"401: Unauthorized\"}";
         }
 	logger.info("url: " + url);
-	logger.info("re: " + re);
+	
         logger.info("from EarthquakeQueryService.getJSON: " + retVal);
         return retVal;
     }
