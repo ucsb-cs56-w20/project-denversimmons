@@ -53,7 +53,7 @@ public class LocationQueryService {
             retVal = "{\"error\": \"401: Unauthorized\"}";
         }
         logger.info("from LocationQueryService.getJSON: " + retVal);
-        return url;
+        return retVal;
     }
 
 } 
