@@ -16,17 +16,23 @@
       <thread>
 	<tr>
 	  <th>Title</th>
+	  <th>Location</th>
 	  <th>Count</th>
 	  <th>Distance (km)</th>
 	  <th>Minimum Magnitude</th>
+	  <th>Latitude</th>
+	  <th>Longitude</th>
 	</tr>
 	<thread>
 	<tbody>
 	<tr>
 	  <td th:text="${featureCollection.metadata.title}"></td>
+	  <td th:text="${eqSearch.location}"></td>
 	  <td th:text="${featureCollection.metadata.count}"></td>
 	  <td th:text="${eqSearch.distance}"></td>
           <td th:text="${eqSearch.minmag}"></td>
+	  <td th:text="${eqSearch.Latitude}"></td>
+	  <td th:text="${eqSearch.Longitude}"></td>
 	</tr>
 	<tbody>
     </table>
