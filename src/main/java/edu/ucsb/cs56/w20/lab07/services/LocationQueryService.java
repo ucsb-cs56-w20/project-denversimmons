@@ -46,15 +46,15 @@ public class LocationQueryService {
 
         String retVal="";
         try {   
-            retVal = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-            //MediaType contentType = re.getHeaders().getContentType();
-            //HttpStatus statusCode = re.getStatusCode();
-            //retVal = re.getBody();
+            ResponseEntity<String> re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+             MediaType contentType = re.getHeaders().getContentType();
+            HttpStatus statusCode = re.getStatusCode();
+            retVal = re.getBody();
         } catch (HttpClientErrorException e) {
             retVal = "{\"error\": \"401: Unauthorized\"}";
         }
-        logger.info("from LocationQueryService.getJSON: " + retVal);
-	return retVal;
+        logger.info("from EarthquakeQueryService.getJSON: " + retVal);
+        return retVal;
     }
 
 } 
