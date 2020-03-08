@@ -27,7 +27,6 @@ public class LocationsController {
             LocSearch locSearch) {
          LocationQueryService e = new LocationQueryService();
          model.addAttribute("locSearch", locSearch);
-        // TODO: Actually do the search here and add results to the model
          String json = e.getJSON(locSearch.getLocation());
          model.addAttribute("json", json);
 	 PlaceCollection pc = new PlaceCollection();
