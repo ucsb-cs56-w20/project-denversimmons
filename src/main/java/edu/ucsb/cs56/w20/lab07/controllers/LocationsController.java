@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import edu.ucsb.cs56.w20.lab07.formbeans.LocSearch;
@@ -36,6 +39,14 @@ public class LocationsController {
             LocSearch locSearch) {
         return "locations/search";
     }
+
+    @DeleteMapping("/locations/delete/{id}")
+    public String delete(@PathVariable("id") long id, Model model) {
+	Location location = locationRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid courseoffering Id:" + id));
+    locationRepository.delete(location);
+    model.addAttribute("locations", locationRepository.findAll());
+    return "locations/index";
+}
 
     @GetMapping("/locations/results")
     public String getLocationsResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
