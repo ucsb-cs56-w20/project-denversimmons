@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.ucsb.cs56.w20.lab07.formbeans.LocSearch;
 import edu.ucsb.cs56.w20.lab07.services.LocationQueryService;
+import edu.ucsb.cs56.w20.lab07.repositories.LocationRepository;
+import edu.ucsb.cs56.w20.lab07.entities.Location;
 
 import java.util.List;
 import osm.PlaceCollection;
@@ -34,5 +36,19 @@ public class LocationsController {
          List<Place> places = pc.listFromJSON(json);
          model.addAttribute("places",places);
          return "locations/results";
+    }
+
+    @GetMapping("/locations")
+    public String locations(Model model, OAuth2AuthenticationToken token,
+            RedirectAttributes redirAttrs) {
+        model.addAttribute("locations", LocationRepository.findAll());
+        return "locations/index";
+    }
+
+    @PostMapping("/locations/add")
+    public String add(Location location, Model model) {
+      LocationRepository.save(location);
+      model.addAttribute("locations", LocationRepository.findAll());
+      return "locations/index";
     }
 }
