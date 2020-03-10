@@ -17,6 +17,7 @@
       <th>Name</th>
       <th>Latitude</th>
       <th>Longitude</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -26,6 +27,9 @@
       <td th:text="${l.name}"></td>
       <td th:text="${l.latitude}"></td>
       <td th:text="${l.longitude}"></td>
+      <form th:method="delete" th:action="@{/locations/delete/} + ${l.id}">
+     <input type="submit" class="btn btn-danger" value="Delete" />
+</form>
     </tr>
     </tbody>
   </table>
