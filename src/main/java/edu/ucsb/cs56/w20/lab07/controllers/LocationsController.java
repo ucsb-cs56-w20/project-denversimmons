@@ -5,11 +5,16 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import edu.ucsb.cs56.w20.lab07.formbeans.LocSearch;
 import edu.ucsb.cs56.w20.lab07.services.LocationQueryService;
 import edu.ucsb.cs56.w20.lab07.repositories.LocationRepository;
 import edu.ucsb.cs56.w20.lab07.entities.Location;
+
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import osm.PlaceCollection;
@@ -18,6 +23,14 @@ import osm.Place;
 @Controller
 public class LocationsController {
 
+
+    private LocationRepository locationRepository;
+
+    @Autowired
+    public LocationsController(LocationRepository repo) {
+        this.locationRepository = repo;
+    }
+    
     @GetMapping("/locations/search")
     public String getLocationsSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             LocSearch locSearch) {
@@ -41,14 +54,14 @@ public class LocationsController {
     @GetMapping("/locations")
     public String locations(Model model, OAuth2AuthenticationToken token,
             RedirectAttributes redirAttrs) {
-        model.addAttribute("locations", LocationRepository.findAll());
+        model.addAttribute("locations", locationRepository.findAll());
         return "locations/index";
     }
 
     @PostMapping("/locations/add")
     public String add(Location location, Model model) {
-      LocationRepository.save(location);
-      model.addAttribute("locations", LocationRepository.findAll());
+      locationRepository.save(location);
+      model.addAttribute("locations", locationRepository.findAll());
       return "locations/index";
     }
 }
