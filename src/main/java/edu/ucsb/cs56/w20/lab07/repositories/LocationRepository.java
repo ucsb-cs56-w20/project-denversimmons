@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface LocationRepository extends CrudRepository<Location, Long> {
-    public List<Location> findByPlaceId(long placeId);
+    public List<Location> findByPlaceId(Long placeId);
 }
