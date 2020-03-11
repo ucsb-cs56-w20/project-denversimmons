@@ -7,7 +7,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Location {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
+    
     public long placeId;
     public String name;
     public double latitude;

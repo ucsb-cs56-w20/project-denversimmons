@@ -45,8 +45,23 @@ public class LocationsController {
 	Location location = locationRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid courseoffering Id:" + id));
     locationRepository.delete(location);
     model.addAttribute("locations", locationRepository.findAll());
-    return "locations/index";
-}
+    return "locations/index"; 
+    }
+    
+    @GetMapping("/locations")
+    public String locations(Model model, OAuth2AuthenticationToken token,
+            RedirectAttributes redirAttrs) {
+        model.addAttribute("locations", locationRepository.findAll());
+        return "locations/index";
+    }
+
+    @PostMapping("/locations/add")
+    public String add(Location location, Model model) {
+      locationRepository.save(location);
+      model.addAttribute("locations", locationRepository.findAll());
+      return "locations/index";
+    }
+
 
     @GetMapping("/locations/results")
     public String getLocationsResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
@@ -60,19 +75,5 @@ public class LocationsController {
          List<Place> places = pc.listFromJSON(json);
          model.addAttribute("places",places);
          return "locations/results";
-    }
-
-    @GetMapping("/locations")
-    public String locations(Model model, OAuth2AuthenticationToken token,
-            RedirectAttributes redirAttrs) {
-        model.addAttribute("locations", locationRepository.findAll());
-        return "locations/index";
-    }
-
-    @PostMapping("/locations/add")
-    public String add(Location location, Model model) {
-      locationRepository.save(location);
-      model.addAttribute("locations", locationRepository.findAll());
-      return "locations/index";
     }
 }
